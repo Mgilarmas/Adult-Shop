@@ -27,6 +27,6 @@ export class FilmService {
       body.append("title", title);
       body.append("genre", genre);
 
-      return this.httpClient.post(this.endPoint, body, {headers})
+      return this.httpClient.post(this.endPoint, body, {headers});
   }
 }

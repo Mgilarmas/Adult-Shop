@@ -11,15 +11,26 @@
     </ion-toolbar>
   </ion-header>
 
-  <form [formGroup]="filmForm">
+  <form [formGroup]="filmForm" (ngSubmit)="createFilm()" id="film-form">
+
     <ion-item>
       <ion-label position="floating">Title</ion-label>
-      <ion-input></ion-input>
+      <ion-input formControlName="title" type="text"></ion-input>
     </ion-item>
+    <ion-note color="danger" *ngIf="getFormControl('title')?.hasError('required') && getFormControl('title')?.touched">
+      A title is required
+    </ion-note>
+
     <ion-item>
       <ion-label position="floating">Genre</ion-label>
-      <ion-input></ion-input>
+      <ion-input formControlName="genre" type="text"></ion-input>
     </ion-item>
+    <ion-note color="danger" *ngIf="getFormControl('genre')?.hasError('required') && getFormControl('genre')?.touched">
+      A genre is required
+    </ion-note>
+
+    <ion-button type="submit" [disabled]="!filmForm.valid">Create</ion-button>
+
   </form>
 
   <ion-list>
