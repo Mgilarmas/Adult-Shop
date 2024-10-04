@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FilmService } from '../services/film.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-films-list',
@@ -10,11 +11,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class FilmsListPage implements OnInit {
 
   filmForm: FormGroup;
-
   films: any = [];
+  isModalOpen: boolean = false;
+  selectedFilm: any = null;
 
   constructor(private filmService: FilmService,
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    private router: Router
   ) {
     this.filmForm = this.formBuilder.group({
       title:['',Validators.compose([Validators.required])],
@@ -26,9 +29,9 @@ export class FilmsListPage implements OnInit {
     this.getAllFilms();
   }
 
-  // ionViewWillEnter(){
-  //   this.getAllFilms();
-  // }
+  gotoHome(){
+    this.router.navigateByUrl("/home");
+  }
 
   getAllFilms(){
     this.filmService.getFilms().subscribe(data =>{
@@ -36,10 +39,13 @@ export class FilmsListPage implements OnInit {
     });
   }
 
+  alert(){
+    alert("Este botón no hace nada pero gracias por usarlo");
+  }
+
   delete(id: any){
     this.filmService.delete(id).subscribe(data =>{
-      console.log("Data deleted");
-      console.log(data)
+      console.log("Film deleted");
       location.reload();
     })
   }

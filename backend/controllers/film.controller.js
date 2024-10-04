@@ -23,13 +23,34 @@ exports.findOne = (req, res) => {
 };
 
 exports.update = (req, res) => {
-};
+    const id = req.params.id;
+  
+    Film.update(req.body, {
+      where: { id: id }
+    })
+      .then(num => {
+        if (num == 1) {
+          res.send({
+            message: "Film was updated successfully."
+          });
+        } else {
+          res.send({
+            message: `Cannot update Film with id=${id}.`
+          });
+        }
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Error updating Film with id=" + id
+        });
+      });
+  };
 
 exports.delete = (req, res) => {
     const id = req.params.id;
 
     Film.destroy({where: {id: id}}).then(() => {
         console.log("Deleted");
-        res.send("Deleted");
+        res.send({message:"Deleted"});
     })
 };

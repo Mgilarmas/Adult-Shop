@@ -9,3 +9,14 @@
   display: flex;
   align-items: center;
 }
+
+#film-list{
+  color: aqua;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#filmsList ion-item{
+  width: 100%;
+  padding: 1em;
+}

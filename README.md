@@ -16,6 +16,10 @@ Postman
 Un navegador
 ```
 
+## Link de Postman para pruebas
+
+* [Postman](https://documenter.getpostman.com/view/38432355/2sAXxMfCzq)
+
 ## Construido con 🛠️
 
 _Menciona las herramientas que utilizaste para crear tu proyecto_

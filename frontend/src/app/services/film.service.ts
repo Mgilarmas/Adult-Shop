@@ -14,6 +14,10 @@ export class FilmService {
     return this.httpClient.get(this.endPoint);
   }
 
+  update(id: any){
+    return this.httpClient.delete(`${this.endPoint}/${id}`);
+  }
+
   delete(id: any){
     return this.httpClient.delete(`${this.endPoint}/${id}`);
   }

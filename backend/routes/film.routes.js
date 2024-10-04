@@ -7,7 +7,7 @@ module.exports = app => {
 
     router.get("/", film.findAll);
 
-    router.put("/", film.update);
+    router.put("/:id", film.update);
 
     router.delete("/:id", film.delete);
 
